@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRANZZ_HUBX🇧🇷 - Scripts Premium para Roblox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --dark: #1A1A2E;
+            --light: #F5F5F5;
+            --accent: #FFD166;
+            --success: #06D6A0;
+            --danger: #EF476F;
+            --brasil-green: #009C3B;
+            --brasil-yellow: #FFDF00;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header com bandeira do Brasil */
+        .header {
+            background: linear-gradient(90deg, var(--dark), #0f3460);
+            padding: 2.5rem;
+            text-align: center;
+            border-bottom: 4px solid var(--brasil-green);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brasil-green), var(--brasil-yellow), var(--brasil-green));
+        }
+
+        .title {
+            font-size: 3.8rem;
+            background: linear-gradient(45deg, var(--brasil-yellow), var(--brasil-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 35px rgba(255, 223, 0, 0.3);
+            letter-spacing: 1.5px;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .title::after {
+            content: '🇧🇷';
+            position: absolute;
+            margin-left: 10px;
+            font-size: 2.5rem;
+        }
+
+        .title:hover {
+            transform: scale(1.03);
+        }
+
+        .subtitle {
+            color: #aaa;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            background: rgba(0, 156, 59, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid rgba(0, 156, 59, 0.3);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: rgba(26, 26, 46, 0.9);
+            border-radius: 15px 15px 0 0;
+            overflow: hidden;
+            margin-bottom: 0;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1.3rem;
+            background: rgba(31, 31, 56, 0.8);
+            border: none;
+            color: var(--light);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            font-weight: 600;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(180deg, rgba(255, 107, 53, 0.2), rgba(26, 26, 46, 0.8));
+            color: var(--accent);
+        }
+
+        .tab-btn.active::before {
+            width: 80%;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+        }
+
+        /* Vitrine */
+        .vitrine-container {
+            background: rgba(26, 26, 46, 0.9);
+            border-radius: 0 0 15px 15px;
+            padding: 2.5rem;
+            min-height: 650px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-top: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .vitrine {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.2rem;
+            margin-top: 2rem;
+        }
+
+        .item-card {
+            background: linear-gradient(145deg, #2a2a4a, #22223a);
+            border-radius: 18px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 107, 53, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary);
+        }
+
+        .item-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .item-name {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-type {
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .type-scripts { 
+            background: linear-gradient(135deg, var(--primary), #ff8c53);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .type-uis { 
+            background: linear-gradient(135deg, var(--secondary), #0066b2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 78, 137, 0.3);
+        }
+        
+        .type-executors { 
+            background: linear-gradient(135deg, var(--success), #0af0b8);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(6, 214, 160, 0.3);
+        }
+
+        .item-description {
+            color: #bbb;
+            margin-bottom: 1.8rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .item-price {
+            font-size: 1.7rem;
+            color: var(--success);
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(6, 214, 160, 0.3);
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .copy-btn:hover::before {
+            left: 100%;
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Modal Login */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, var(--dark), #0f172a);
+            padding: 3.5rem;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 450px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 60px rgba(255, 107, 53, 0.4);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
+            border-radius: 27px;
+            z-index: -1;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal h2 {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 1.2rem;
+            margin-bottom: 1.8rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--secondary);
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .modal input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .modal button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .modal button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(145deg, var(--dark), #0f172a);
+            padding: 2.5rem;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 10001;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 120px rgba(0, 0, 0, 0.95);
+            display: none;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .admin-title {
+            color: var(--accent);
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .close-admin {
+            background: linear-gradient(135deg, var(--danger), #ff2e63);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .close-admin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(239, 71, 111, 0.4);
+        }
+
+        .admin-form {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--secondary);
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .script-link-preview {
+            background: rgba(0, 156, 59, 0.1);
+            border: 2px solid var(--brasil-green);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--light);
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+            word-break: break-all;
+            display: none;
+        }
+
+        .price-container {
+            background: rgba(6, 214, 160, 0.15);
+            border: 2px solid var(--success);
+            border-radius: 12px;
+            padding: 1.2rem;
+            color: var(--success);
+            font-weight: 900;
+            font-size: 1.4rem;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(6, 214, 160, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1.2rem;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .admin-items {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .item-admin-card {
+            background: linear-gradient(135deg, rgba(42, 42, 74, 0.8), rgba(34, 34, 58, 0.8));
+            padding: 1.8rem;
+            border-radius: 15px;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .item-admin-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .item-admin-info h4 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .item-admin-info span {
+            color: #aaa;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .edit-btn, .delete-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .edit-btn {
+            background: linear-gradient(135deg, var(--accent), #ffc233);
+            color: var(--dark);
+        }
+
+        .delete-btn {
+            background: linear-gradient(135deg, var(--danger), #ff2e63);
+            color: white;
+        }
+
+        .edit-btn:hover, .delete-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            color: #888;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem;
+            grid-column: 1 / -1;
+        }
+
+        .empty-icon {
+            font-size: 5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Copy Notification */
+        .copy-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--success), #0af0b8);
+            color: var(--dark);
+            padding: 1.2rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(6, 214, 160, 0.4);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+        }
+
+        .copy-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Click Counter */
+        .click-counter {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.8rem;
+            }
+            
+            .vitrine {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .admin-panel {
+                padding: 1.5rem;
+            }
+            
+            .item-admin-card {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .item-actions {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Badge Brasil */
+        .brasil-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, var(--brasil-green), var(--brasil-yellow));
+            color: var(--dark);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid white;
+        }
+
+        /* Modal de confirmação de cópia */
+        .copy-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10002;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copy-modal-content {
+            background: linear-gradient(145deg, var(--dark), #0f172a);
+            padding: 3rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            border: 2px solid var(--success);
+            text-align: center;
+            box-shadow: 0 0 50px rgba(6, 214, 160, 0.4);
+        }
+
+        .copy-modal h3 {
+            color: var(--success);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .copy-modal .link-display {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            word-break: break-all;
+            border: 1px solid var(--secondary);
+        }
+
+        .copy-modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .copy-modal-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .copy-modal-btn.copy {
+            background: linear-gradient(135deg, var(--success), #0af0b8);
+            color: var(--dark);
+        }
+
+        .copy-modal-btn.open {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="brasil-badge">🇧🇷 BRASIL</div>
+        <div class="click-counter" id="clickCounter"></div>
+        <h1 class="title">BRANZZ_HUBX</h1>
+        <p class="subtitle">Scripts Premium para Roblox • ByPASS • Executors • UIs</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="scripts">🚀 SCRIPTS</button>
+            <button class="tab-btn" data-tab="uis">🎨 INTERFACES</button>
+            <button class="tab-btn" data-tab="executors">⚡ EXECUTORS</button>
+        </div>
+
+        <!-- Vitrine Content -->
+        <div class="vitrine-container">
+            <div class="tab-content active" id="scripts">
+                <h2 style="color: var(--accent); margin-bottom: 1rem; font-size: 2.2rem;">SCRIPTS AUTOMÁTICOS</h2>
+                <p style="color: #aaa; margin-bottom: 2.5rem; font-size: 1.1rem;">Scripts premium para farm automático, ByPASS e exploits em Roblox</p>
+                <div class="vitrine" id="vitrine-scripts">
+                    <!-- Itens serão carregados via JavaScript -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="uis">
+                <h2 style="color: var(--secondary); margin-bottom: 1rem; font-size: 2.2rem;">INTERFACES CUSTOMIZADAS</h2>
+                <p style="color: #aaa; margin-bottom: 2.5rem; font-size: 1.1rem;">UIs profissionais com design premium para seus scripts</p>
+                <div class="vitrine" id="vitrine-uis">
+                    <!-- Itens serão carregados via JavaScript -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="executors">
+                <h2 style="color: var(--success); margin-bottom: 1rem; font-size: 2.2rem;">EXECUTORS ATUALIZADOS</h2>
+                <p style="color: #aaa; margin-bottom: 2.5rem; font-size: 1.1rem;">Executors com ByPASS para rodar qualquer script sem detecção</p>
+                <div class="vitrine" id="vitrine-executors">
+                    <!-- Itens serão carregados via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">© 2024 BRANZZ_HUBX 🇧🇷 - Todos os direitos reservados</p>
+        <p style="font-size: 0.95rem; color: #666;">Sistema de scripts atualizado em tempo real • ByPASS garantido</p>
+    </footer>
+
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+        ✅ Link copiado para área de transferência!
+    </div>
+
+    <!-- Modal de Cópia -->
+    <div class="copy-modal" id="copyModal">
+        <div class="copy-modal-content">
+            <h3>📋 COPIAR LINK</h3>
+            <p style="color: #aaa; margin-bottom: 1rem;">Deseja copiar este link para área de transferência?</p>
+            <div class="link-display" id="linkToCopy">
+                <!-- Link será exibido aqui -->
+            </div>
+            <div class="copy-modal-buttons">
+                <button class="copy-modal-btn copy" id="confirmCopy">✅ COPIAR</button>
+                <button class="copy-modal-btn open" id="openLink">🔗 ABRIR LINK</button>
+            </div>
+            <button class="copy-modal-btn" id="cancelCopy" style="margin-top: 1rem; width: 100%; background: var(--danger); color: white;">
+                ❌ CANCELAR
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h2>🔐 ACESSO ADMINISTRATIVO</h2>
+            <p style="color: #aaa; margin-bottom: 1.8rem; font-size: 1.1rem;">Digite a senha para acessar o painel</p>
+            <input type="password" id="adminPassword" placeholder="Senha secreta">
+            <button id="loginButton">🔓 ACESSAR PAINEL</button>
+            <p id="loginError" style="color: var(--danger); margin-top: 1.5rem; display: none; font-weight: 600;">❌ Senha incorreta!</p>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h2 class="admin-title">PAINEL ADMINISTRATIVO BRANZZ_HUBX</h2>
+            <button class="close-admin" onclick="closeAdminPanel()">✕ FECHAR</button>
+        </div>
+
+        <!-- Admin Form -->
+        <div class="admin-form">
+            <h3 style="color: var(--accent); margin-bottom: 1.8rem; font-size: 1.5rem;">➕ ADICIONAR NOVO SCRIPT</h3>
+            <form id="addItemForm">
+                <div class="form-group">
+                    <label for="scriptLink">🔗 LINK DO SCRIPT (QUALQUER LINK)</label>
+                    <input type="text" id="scriptLink" class="form-control" 
+                           placeholder="Cole qualquer link aqui: YouTube, Discord, Site, Pastebin, etc..." 
+                           required>
+                    <div class="script-link-preview" id="linkPreview">
+                        Seu link será exibido aqui...
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemCategory">📂 CATEGORIA DO SCRIPT</label>
+                    <select id="itemCategory" class="form-control">
+                        <option value="scripts">🚀 Script</option>
+                        <option value="uis">🎨 Interface</option>
+                        <option value="executors">⚡ Executor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemName">📝 NOME DO SCRIPT</label>
+                    <input type="text" id="itemName" class="form-control" placeholder="Ex: Farm Automático VIP - ByPASS" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemDescription">📋 DESCRIÇÃO DO SCRIPT</label>
+                    <textarea id="itemDescription" class="form-control" rows="4" placeholder="Descreva o script aqui... Ex: Script para farm automático com ByPASS, anti-ban e suporte a todos os jogos." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>💰 PREÇO (SEMPRE GRÁTIS)</label>
+                    <div class="price-container">
+                        🇧🇷 100% GRÁTIS 🇧🇷
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">🚀 ADICIONAR SCRIPT</button>
+            </form>
+        </div>
+
+        <!-- Admin Items List -->
+        <div class="admin-items">
+            <h3 style="color: var(--accent); margin-bottom: 1.8rem; font-size: 1.5rem;">📋 SCRIPTS CADASTRADOS</h3>
+            <div id="adminItemsList">
+                <!-- Itens serão carregados via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===============================
+        // SISTEMA DE ARMAZENAMENTO PERMANENTE
+        // ===============================
+        const STORAGE_KEY = 'branzz_hubx_scripts_final';
+        
+        // Dados iniciais (scripts de exemplo)
+        const initialData = {
+            scripts: [
+                {
+                    id: '1',
+                    name: 'Farm Automático VIP - ByPASS',
+                    description: 'Script completo para farm automático em qualquer jogo Roblox. ByPASS ativo, anti-detecção e atualização automática.',
+                    price: 'GRÁTIS',
+                    scriptLink: 'https://pastebin.com/raw/ExEmPlO123',
+                    copies: 2450,
+                    type: 'scripts'
+                },
+                {
+                    id: '2',
+                    name: 'Wall Hack - ESP Premium',
+                    description: 'ESP completo com wallhack, ver através das paredes, highlight de inimigos e itens raros.',
+                    price: 'GRÁTIS',
+                    scriptLink: 'https://github.com/user/repo/raw/main/wallhack.lua',
+                    copies: 1870,
+                    type: 'scripts'
+                }
+            ],
+            uis: [
+                {
+                    id: '3',
+                    name: 'UI Dragon - Modern Design',
+                    description: 'Interface premium com animações fluidas, múltiplas abas e sistema de themes. Totalmente customizável.',
+                    price: 'GRÁTIS',
+                    scriptLink: 'https://rentry.co/uidragon/raw',
+                    copies: 1320,
+                    type: 'uis'
+                }
+            ],
+            executors: [
+                {
+                    id: '4',
+                    name: 'Executor Delta - Anti-Ban',
+                    description: 'Executor com ByPASS ativo, suporte a DLL injection e execução de scripts complexos sem detecção.',
+                    price: 'GRÁTIS',
+                    scriptLink: 'https://example.com/download/delta.exe',
+                    copies: 3200,
+                    type: 'executors'
+                }
+            ]
+        };
+
+        // Carregar dados do localStorage ou usar dados iniciais
+        function loadStoreData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                return JSON.parse(saved);
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
+            return initialData;
+        }
+
+        // Salvar dados no localStorage
+        function saveStoreData(data) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        // Obter dados atuais
+        let storeData = loadStoreData();
+
+        // ===============================
+        // VARIÁVEIS GLOBAIS
+        // ===============================
+        let currentCopyLink = '';
+        let currentItemType = '';
+        let currentItemId = '';
+
+        // ===============================
+        // SISTEMA DE VITRINE
+        // ===============================
+        const vitrines = {
+            scripts: document.getElementById('vitrine-scripts'),
+            uis: document.getElementById('vitrine-uis'),
+            executors: document.getElementById('vitrine-executors')
+        };
+
+        // Renderizar vitrine
+        function renderVitrine() {
+            // Limpar todas as vitrines
+            for (const type in vitrines) {
+                vitrines[type].innerHTML = '';
+            }
+
+            // Renderizar cada categoria
+            for (const type in storeData) {
+                const items = storeData[type];
+                const vitrine = vitrines[type];
+                
+                if (items.length === 0) {
+                    vitrine.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">📜</div>
+                            <h3 style="color: var(--accent); margin-bottom: 0.8rem; font-size: 1.8rem;">Nenhum script disponível</h3>
+                            <p style="color: #aaa; font-size: 1.1rem;">Novos scripts em breve!</p>
+                        </div>
+                    `;
+                    continue;
+                }
+
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'item-card';
+                    card.setAttribute('data-id', item.id);
+                    
+                    let typeClass = 'type-scripts';
+                    let typeText = 'SCRIPT';
+                    let icon = '🚀';
+                    
+                    if (type === 'uis') {
+                        typeClass = 'type-uis';
+                        typeText = 'INTERFACE';
+                        icon = '🎨';
+                    } else if (type === 'executors') {
+                        typeClass = 'type-executors';
+                        typeText = 'EXECUTOR';
+                        icon = '⚡';
+                    }
+
+                    card.innerHTML = `
+                        <div class="item-header">
+                            <h3 class="item-name">${icon} ${item.name}</h3>
+                            <span class="item-type ${typeClass}">${typeText}</span>
+                        </div>
+                        <p class="item-description">${item.description}</p>
+                        <div style="margin: 1.2rem 0; padding: 0.8rem; background: rgba(255, 107, 53, 0.1); border-radius: 8px; border-left: 3px solid var(--primary);">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <small style="color: var(--accent); font-weight: 600;">
+                                    🔗 Link do Script
+                                </small>
+                                <small style="color: #777; font-size: 0.9rem;">📋 ${item.copies.toLocaleString()} cópias</small>
+                            </div>
+                            <small style="color: #aaa; font-size: 0.9rem; word-break: break-all;">${truncateLink(item.scriptLink)}</small>
+                        </div>
+                        <div class="item-footer">
+                            <div>
+                                <div class="item-price">${item.price}</div>
+                                <small style="color: #777; font-size: 0.9rem;">🔄 Atualizado hoje</small>
+                            </div>
+                            <button class="copy-btn" onclick="showCopyModal('${type}', '${item.id}')">
+                                <span>📋</span> COPIAR LINK
+                            </button>
+                        </div>
+                    `;
+                    
+                    vitrine.appendChild(card);
+                });
+            }
+        }
+
+        // Truncar link para mostrar no card
+        function truncateLink(link) {
+            if (!link) return 'Sem link';
+            if (link.length > 50) {
+                return link.substring(0, 30) + '...' + link.substring(link.length - 20);
+            }
+            return link;
+        }
+
+        // ===============================
+        // SISTEMA DE MODAL DE CÓPIA (NÃO ABRE O LINK)
+        // ===============================
+        function showCopyModal(type, itemId) {
+            const items = storeData[type];
+            const item = items.find(i => i.id === itemId);
+            
+            if (!item) {
+                alert('Script não encontrado!');
+                return;
+            }
+
+            // Salvar informações atuais
+            currentCopyLink = item.scriptLink;
+            currentItemType = type;
+            currentItemId = itemId;
+
+            // Mostrar modal
+            const copyModal = document.getElementById('copyModal');
+            const linkToCopy = document.getElementById('linkToCopy');
+            
+            linkToCopy.textContent = currentCopyLink;
+            copyModal.style.display = 'flex';
+
+            // Parar qualquer propagação de evento
+            event.stopPropagation();
+            event.preventDefault();
+            return false;
+        }
+
+        // Inicializar eventos do modal de cópia
+        function initCopyModal() {
+            const copyModal = document.getElementById('copyModal');
+            const confirmCopyBtn = document.getElementById('confirmCopy');
+            const openLinkBtn = document.getElementById('openLink');
+            const cancelCopyBtn = document.getElementById('cancelCopy');
+
+            // Botão de copiar
+            confirmCopyBtn.addEventListener('click', async () => {
+                try {
+                    // Copiar para área de transferência
+                    await navigator.clipboard.writeText(currentCopyLink);
+                    
+                    // Mostrar notificação
+                    showNotification('✅ Link copiado para área de transferência!');
+                    
+                    // Atualizar contador
+                    updateCopyCount();
+                    
+                    // Fechar modal
+                    copyModal.style.display = 'none';
+                    
+                } catch (error) {
+                    console.error('Erro ao copiar:', error);
+                    
+                    // Fallback para método antigo
+                    try {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = currentCopyLink;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        
+                        showNotification('✅ Link copiado para área de transferência!');
+                        updateCopyCount();
+                        copyModal.style.display = 'none';
+                    } catch (fallbackError) {
+                        showNotification('❌ Erro ao copiar o link!');
+                    }
+                }
+            });
+
+            // Botão de abrir link
+            openLinkBtn.addEventListener('click', () => {
+                // Abrir link em nova aba
+                window.open(currentCopyLink, '_blank');
+                
+                // Atualizar contador
+                updateCopyCount();
+                
+                // Fechar modal
+                copyModal.style.display = 'none';
+                
+                // Mostrar notificação
+                showNotification('🔗 Link aberto em nova aba!');
+            });
+
+            // Botão de cancelar
+            cancelCopyBtn.addEventListener('click', () => {
+                copyModal.style.display = 'none';
+            });
+
+            // Fechar modal ao clicar fora
+            copyModal.addEventListener('click', (e) => {
+                if (e.target === copyModal) {
+                    copyModal.style.display = 'none';
+                }
+            });
+
+            // Fechar com ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && copyModal.style.display === 'flex') {
+                    copyModal.style.display = 'none';
+                }
+            });
+        }
+
+        // Atualizar contador de cópias
+        function updateCopyCount() {
+            const items = storeData[currentItemType];
+            const item = items.find(i => i.id === currentItemId);
+            
+            if (item) {
+                item.copies = (item.copies || 0) + 1;
+                saveStoreData(storeData);
+                renderVitrine();
+                renderAdminItems();
+            }
+        }
+
+        // Mostrar notificação
+        function showNotification(message) {
+            const notification = document.getElementById('copyNotification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // ===============================
+        // SISTEMA DE PAINEL ADMINISTRATIVO SECRETO
+        // ===============================
+        let clickCount = 0;
+        const header = document.getElementById('mainHeader');
+        const clickCounter = document.getElementById('clickCounter');
+        const loginModal = document.getElementById('loginModal');
+        const adminPanel = document.getElementById('adminPanel');
+        const adminPassword = document.getElementById('adminPassword');
+        const loginButton = document.getElementById('loginButton');
+        const loginError = document.getElementById('loginError');
+        const scriptLink = document.getElementById('scriptLink');
+        const linkPreview = document.getElementById('linkPreview');
+
+        // Preview do link do script
+        scriptLink.addEventListener('input', function() {
+            if (this.value.trim()) {
+                linkPreview.textContent = this.value;
+                linkPreview.style.display = 'block';
+            } else {
+                linkPreview.style.display = 'none';
+            }
+        });
+
+        // Sistema de cliques no título
+        header.addEventListener('click', () => {
+            clickCount++;
+            
+            clickCounter.textContent = `Cliques: ${clickCount}`;
+            clickCounter.style.opacity = '1';
+            
+            clearTimeout(window.clickTimeout);
+            window.clickTimeout = setTimeout(() => {
+                clickCount = 0;
+                clickCounter.style.opacity = '0';
+            }, 3000);
+            
+            if (clickCount === 3) {
+                showLoginModal();
+                clickCount = 0;
+                clickCounter.style.opacity = '0';
+            }
+        });
+
+        function showLoginModal() {
+            loginModal.style.display = 'flex';
+            adminPassword.focus();
+        }
+
+        // Login
+        loginButton.addEventListener('click', () => {
+            if (adminPassword.value === 'LK9890') {
+                loginModal.style.display = 'none';
+                adminPassword.value = '';
+                loginError.style.display = 'none';
+                showAdminPanel();
+            } else {
+                loginError.style.display = 'block';
+                adminPassword.value = '';
+            }
+        });
+
+        // Fechar modal ao pressionar Enter
+        adminPassword.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                loginButton.click();
+            }
+        });
+
+        // Fechar modal ao clicar fora
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+                adminPassword.value = '';
+                loginError.style.display = 'none';
+                clickCount = 0;
+            }
+        });
+
+        // Mostrar painel admin
+        function showAdminPanel() {
+            adminPanel.style.display = 'block';
+            renderAdminItems();
+        }
+
+        // Fechar painel admin
+        function closeAdminPanel() {
+            adminPanel.style.display = 'none';
+            document.getElementById('addItemForm').reset();
+            linkPreview.style.display = 'none';
+        }
+
+        // ===============================
+        // SISTEMA DE GERENCIAMENTO DE SCRIPTS
+        // ===============================
+        const addItemForm = document.getElementById('addItemForm');
+        const itemCategory = document.getElementById('itemCategory');
+        const itemName = document.getElementById('itemName');
+        const itemDescription = document.getElementById('itemDescription');
+
+        // Adicionar novo script
+        addItemForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (!scriptLink.value.trim()) {
+                alert('Por favor, insira um link!');
+                return;
+            }
+            
+            if (!itemName.value.trim()) {
+                alert('Por favor, digite um nome para o script!');
+                return;
+            }
+            
+            if (!itemDescription.value.trim()) {
+                alert('Por favor, digite uma descrição para o script!');
+                return;
+            }
+            
+            // Criar novo script
+            const newScript = {
+                id: Date.now().toString(),
+                name: itemName.value,
+                description: itemDescription.value,
+                price: 'GRÁTIS',
+                scriptLink: scriptLink.value,
+                copies: 0,
+                type: itemCategory.value
+            };
+            
+            // Adicionar ao armazenamento
+            const category = itemCategory.value;
+            if (!storeData[category]) {
+                storeData[category] = [];
+            }
+            storeData[category].push(newScript);
+            
+            // Salvar permanentemente
+            saveStoreData(storeData);
+            
+            // Atualizar interfaces
+            renderVitrine();
+            renderAdminItems();
+            
+            // Limpar formulário
+            addItemForm.reset();
+            linkPreview.style.display = 'none';
+            
+            // Feedback
+            showNotification('✅ Script adicionado com sucesso!');
+        });
+
+        // Renderizar scripts no painel admin
+        function renderAdminItems() {
+            const adminItemsList = document.getElementById('adminItemsList');
+            adminItemsList.innerHTML = '';
+            
+            let hasItems = false;
+            
+            for (const type in storeData) {
+                const items = storeData[type];
+                
+                if (items.length > 0) {
+                    hasItems = true;
+                    const categoryTitle = document.createElement('h4');
+                    categoryTitle.style.color = type === 'scripts' ? 'var(--accent)' : 
+                                               type === 'uis' ? 'var(--secondary)' : 
+                                               'var(--success)';
+                    categoryTitle.style.margin = '1.5rem 0 1rem 0';
+                    categoryTitle.style.fontSize = '1.3rem';
+                    categoryTitle.innerHTML = type === 'scripts' ? '🚀 SCRIPTS' : 
+                                             type === 'uis' ? '🎨 INTERFACES' : 
+                                             '⚡ EXECUTORS';
+                    adminItemsList.appendChild(categoryTitle);
+                }
+                
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'item-admin-card';
+                    
+                    card.innerHTML = `
+                        <div class="item-admin-info">
+                            <h4>${item.name}</h4>
+                            <span style="color: #666; font-size: 0.9rem; word-break: break-all;">${truncateLink(item.scriptLink)}</span>
+                            <div style="margin-top: 0.5rem;">
+                                <span style="color: var(--success); font-size: 0.9rem; background: rgba(6, 214, 160, 0.1); padding: 0.3rem 0.8rem; border-radius: 15px;">
+                                    📋 ${item.copies} cópias
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="edit-btn" onclick="editScript('${type}', '${item.id}')">✏️ EDITAR</button>
+                            <button class="delete-btn" onclick="deleteScript('${type}', '${item.id}')">🗑️ EXCLUIR</button>
+                        </div>
+                    `;
+                    
+                    adminItemsList.appendChild(card);
+                });
+            }
+            
+            if (!hasItems) {
+                adminItemsList.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: #aaa;">
+                        <div style="font-size: 4rem; margin-bottom: 1.5rem; color: var(--primary);">📜</div>
+                        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">Nenhum script cadastrado ainda.</p>
+                        <p style="font-size: 1rem; color: #666;">Adicione seu primeiro script usando o formulário acima!</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Editar script
+        window.editScript = function(type, itemId) {
+            const items = storeData[type];
+            const item = items.find(i => i.id === itemId);
+            
+            if (!item) return;
+            
+            const newName = prompt('Novo nome do script:', item.name);
+            if (newName === null) return;
+            
+            const newDescription = prompt('Nova descrição:', item.description);
+            if (newDescription === null) return;
+            
+            const newLink = prompt('Novo link do script:', item.scriptLink);
+            if (newLink === null) return;
+            
+            item.name = newName;
+            item.description = newDescription;
+            item.scriptLink = newLink;
+            
+            saveStoreData(storeData);
+            renderVitrine();
+            renderAdminItems();
+            
+            showNotification('✅ Script editado com sucesso!');
+        };
+
+        // Excluir script
+        window.deleteScript = function(type, itemId) {
+            if (!confirm('Tem certeza que deseja excluir este script permanentemente?')) {
+                return;
+            }
+            
+            storeData[type] = storeData[type].filter(item => item.id !== itemId);
+            
+            saveStoreData(storeData);
+            renderVitrine();
+            renderAdminItems();
+            
+            showNotification('🗑️ Script excluído com sucesso!');
+        };
+
+        // ===============================
+        // SISTEMA DE ABAS
+        // ===============================
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // ===============================
+        // INICIALIZAÇÃO
+        // ===============================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Renderizar vitrine inicial
+            renderVitrine();
+            
+            // Inicializar modal de cópia
+            initCopyModal();
+            
+            // Adicionar evento de tecla para fechar painel admin
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (adminPanel.style.display === 'block') {
+                        closeAdminPanel();
+                    }
+                    const copyModal = document.getElementById('copyModal');
+                    if (copyModal.style.display === 'flex') {
+                        copyModal.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
